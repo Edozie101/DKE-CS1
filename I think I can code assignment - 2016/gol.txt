@@ -1,0 +1,58 @@
+public class GoL
+{
+	public static void main (String args[])
+	{
+//construction
+		GameOfLifeUI grid = new GameOfLifeUI(40,40,20);
+//constants
+	    int speed = 2;
+	    int bound = 40;
+//init
+		for(int live_x=0;live_x<bound;live_x++)
+			{
+			for(int live_y=0;live_y<bound;live_y++)
+				{	
+				grid.setCellToYellow(live_x, live_y);
+				grid.update();
+				try
+				{Thread.sleep(speed);}
+				catch
+				(Exception e) {}
+				}
+//set to default
+			}
+		for(int live_x=0;live_x<bound;live_x++)
+			{
+			for(int live_y=0;live_y<bound;live_y++)
+				{	
+				grid.setCellToGrey(live_x, live_y);
+				grid.update();
+				try
+				{Thread.sleep(speed);}
+					catch
+					(Exception e) {}
+				}
+			}
+//generating seed
+		for(int live_x=0;live_x<bound;live_x++)
+		{
+		for(int live_y=0;live_y<bound;live_y++)
+			{	
+			double r = Math.random();
+			if(r>0.5){
+				grid.setCellToYellow(live_x, live_y);
+				grid.update();
+			}
+			else{
+				grid.setCellToGrey(live_x, live_y);
+				grid.update();
+			}
+
+			try
+			{Thread.sleep(speed);}
+			catch
+			(Exception e) {}
+			}
+		}
+	}
+}
